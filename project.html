@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <style>
+       body{
+         background-color:#aabd5c;
+         display: flex;
+         justify-content: center;
+         align-items: center; 
+          height: 100vh; 
+       
+       }
+       #form{
+        background-color: white;
+        padding: 50px;
+        text-align: center;
+       }
+       h2{
+        margin: 0px 0px 10px 0px;
+       }
+       input{
+        width:200px;
+        margin: 10px 0px;
+        padding: 10px;
+       }
+       input[type="submit"]{
+        background-color: #474f26;
+        width:180px;
+        border: 0;
+        color: white;
+       }
+       .error{
+        color: red;
+        margin: 0px;
+        text-align: left;
+       }
+       
+
+    </style>
+</head>
+<body>
+    <div id="form">
+    <h2>Login</h2>
+    <form onsubmit="return  validateform()">
+    <input type="text" id="fname" placeholder="Username"><br>
+     <p id="usererror" class="error"></p>
+    <input type="password" id="pass" placeholder="password"><br>
+    <p id="passerror" class="error"></p>
+    <input type="submit" value="submit">
+    </form>
+    </div>
+    <script>
+       let username=document.getElementById("fname");
+       let password= document.getElementById("pass");
+       let flag=1;
+       
+        function validateform(){
+            if(username.value==""){
+                document.getElementById("usererror").innerHTML=" username is invalid";
+                flag=0;
+            }else if(username.value.length<5) {
+                document.getElementById("usererror").innerHTML=" username required min 5 char";
+                flag=0;
+            }else{
+                document.getElementById("usererror").innerHTML="";
+                flag=0
+            }
+
+            if(password.value ==""){
+                 document.getElementById("passerror").innerHTML=" password is invalid";
+                 flag=0;
+               } else{
+    
+                document.getElementById("passerror").innerHTML="";
+                flag=1;
+                 }
+                if(flag){
+                         return true;
+                }else{
+                     return false;
+                }
+         }
+        
+
+
+    </script>
+</body>
+</html>
